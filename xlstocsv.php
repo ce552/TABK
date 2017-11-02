@@ -1,12 +1,5 @@
 <?php
-/**
-Description: Export Excel file to CSV using PHPExcel library.
 
-References:
-http://stackoverflow.com/questions/3895819/csv-export-import-with-phpexcel
-http://stackoverflow.com/questions/9695695/how-to-use-phpexcel-to-read-data-and-insert-into-database
-http://stackoverflow.com/questions/6346314/phpexcel-will-not-export-to-csv
- **/
 
 // Error reporting
 error_reporting(E_ALL);
