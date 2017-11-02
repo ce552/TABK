@@ -1,0 +1,4 @@
+This is where converted excell sheets will go. 
+Work in progress:
+- Create a new folder with the date as name
+- Insert the sheets with their page number as the name
