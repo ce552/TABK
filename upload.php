@@ -51,7 +51,7 @@ function convertXLStoCSV ($inputFileName)
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'CSV');
         $objWriter->setSheetIndex($i);   // Select which sheet.
         $objWriter->setDelimiter(';');  // Define delimiter
-        $objWriter->save($createName . $i . ".csv");
+        $objWriter->save($createName .".#" . $i . ".csv");
         echo "done sheet " . $i . "<br>";
     }
 }
