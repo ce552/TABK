@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div id="content">
-                <h2>Upload Testing</h2>
+                <h1>Upload Testing </h1>
                 <form action = "upload.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
                         application/vnd.ms-excel"><br>
