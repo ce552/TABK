@@ -10,8 +10,10 @@ $timeStamp = date('Ymd');
 //Executes once upload form is submitted. File name is sent with the name 'file'
 if(isset($_POST)) {
     if(in_array($_FILES['file']['type'], $allowed_types)){
-        //Creates a new file to hold upload. The folder name is upload date in format YYYMMDD.
-        mkdir('C:/xampp/htdocs/TABK/uploads/'.$timeStamp);
+        if (!file_exists('C:/xampp/htdocs/TABK/uploads/'.$timeStamp)) {
+            //Creates a new file to hold upload. The folder name is upload date in format YYYMMDD.
+            mkdir('C:/xampp/htdocs/TABK/uploads/' . $timeStamp);
+        }
         $uploadDir = 'C:/xampp/htdocs/TABK/uploads/'.$timeStamp.'/';
         $temp = explode(".", $_FILES["file"]["name"]);
         $uploadName = "input" . '.' . end($temp);   //Renames file to 'input'.(extension)
@@ -32,7 +34,9 @@ try {
     $inputFileType = PHPExcel_IOFactory::identify($fileName);
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
     $objPHPExcel = $objReader->load($fileName);
-    mkdir('C:/xampp/htdocs/TABK/uploads/CSV/'.$timeStamp);
+    if (!file_exists('C:/xampp/htdocs/TABK/uploads/CSV/'.$timeStamp)) {
+        mkdir('C:/xampp/htdocs/TABK/uploads/CSV/' . $timeStamp);
+    }
 }
 catch (Exception $e) {
     die('Error loading file "'.pathinfo($fileName,PATHINFO_BASENAME).'": '.$e->getMessage());
