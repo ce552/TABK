@@ -1,4 +1,5 @@
 <?php
+
 //PHPExcel is used to convert Excel workbooks into CSV for easier database input.
 require_once 'C:/xampp/php/pear/PHPExcel-1.8/Classes/PHPExcel.php';
 require_once 'C:/xampp/php/pear/PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
@@ -6,21 +7,27 @@ require_once 'C:/xampp/php/pear/PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 //Allowed file types.
 $allowed_types = ['application/vnd.ms-excel','text/xls','text/xlsx',
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+
 $timeStamp = date('Ymd');
 //Executes once upload form is submitted. File name is sent with the name 'file'
+
 if(isset($_POST)) {
     if(in_array($_FILES['file']['type'], $allowed_types)){
+
+        //Creates a new file to hold upload if doesnt exist. The folder name is upload date in format YYYMMDD.
         if (!file_exists('C:/xampp/htdocs/TABK/uploads/'.$timeStamp)) {
-            //Creates a new file to hold upload. The folder name is upload date in format YYYMMDD.
             mkdir('C:/xampp/htdocs/TABK/uploads/' . $timeStamp);
         }
+
         $uploadDir = 'C:/xampp/htdocs/TABK/uploads/'.$timeStamp.'/';
         $temp = explode(".", $_FILES["file"]["name"]);
         $uploadName = "input" . '.' . end($temp);   //Renames file to 'input'.(extension)
+
         //Permanently move file to uploads directory corresponding to upload date.
         move_uploaded_file($_FILES["file"]["tmp_name"], $uploadDir. '/' . $uploadName);
         echo "File is valid, and was successfully uploaded." . '<br>';
-    } else {
+    }
+    else {
         echo "Error: Only excel sheets allowed!" . '<br>';
         die();
     }
